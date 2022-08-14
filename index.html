@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <h2>My shopping cart</h2>
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="image/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input type="number" min="0" id="number" class="form-control text-center" value="1">
+                           <button id="plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="product-price">1278</span></h5>
+                        <img src="image/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="image/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minus-two" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input type="number" id="number-two" min="0" class="form-control text-center" value="1">
+                           <button id="plus-two" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$ <span id="product-price-two">59</span></h5>
+                        <img src="image/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$ <span id="price">1337</span></h5>
+                        <h5>$0</h5>
+                        <h5>$ <span id="total-price">1337</span> </h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+
+   <script>
+     let plus=document.getElementById('plus');
+     const productPrice=document.getElementById('product-price').innerText;
+     const price=parseInt(productPrice);
+     const productMinimum=document.getElementById('number').getAttribute('min');
+     const productMini=parseInt(productMinimum);
+    //  const priceAmount=document.getElementById('price').innerText;
+    //  const pr=parseInt(priceAmount);
+     //product one plus
+     plus.addEventListener("click",function(){
+        const number=document.getElementById('number').value;
+        const num=parseInt(number);
+        const result=document.getElementById('number').value=num+1;
+        document.getElementById('product-price').innerText=price*result;
+        const priceAmount=document.getElementById('price').innerText;
+        const pr=parseInt(priceAmount);
+        const priceResult= document.getElementById('price').innerText=pr+price;
+        document.getElementById('total-price').innerText=priceResult;
+
+     });
+
+     //product one minus
+     let minus=document.getElementById('minus');
+     minus.addEventListener("click",function(){
+        const number=document.getElementById('number').value;
+        const num=parseInt(number);
+       if(num!=productMini){
+       
+        const result=document.getElementById('number').value=num-1;
+        document.getElementById('product-price').innerText=price*result;
+        const priceAmount=document.getElementById('price').innerText;
+        const pr=parseInt(priceAmount);
+        const priceResult=document.getElementById('price').innerText=pr-price;
+        document.getElementById('total-price').innerText=priceResult;
+
+
+       }
+       else{
+        document.getElementById('number').value=0;
+        // document.getElementById('product-price').innerText=0;
+
+       }
+     });
+
+     //product two plus
+     let plusTwo=document.getElementById('plus-two');
+     const productPriceTwo=document.getElementById('product-price-two').innerText;
+     const priceTwo=parseInt(productPriceTwo);
+     const productMinimumTwo=document.getElementById('number-two').getAttribute('min');
+     const productMiniTwo=parseInt(productMinimumTwo);
+     //product one plus
+     plusTwo.addEventListener("click",function(){
+        const number=document.getElementById('number-two').value;
+        const num=parseInt(number);
+        const result=document.getElementById('number-two').value=num+1;
+        document.getElementById('product-price-two').innerText=priceTwo*result;
+        const priceAmount=document.getElementById('price').innerText;
+        const pr=parseInt(priceAmount);
+        const priceTotalAmount=document.getElementById('total-price').innerText;
+        const pt=parseInt(priceTotalAmount);
+        const priceResult= document.getElementById('price').innerText=pr+priceTwo;
+        document.getElementById('total-price').innerText=priceResult;
+
+     });
+
+
+     //product two minus
+     let minusTwo=document.getElementById('minus-two');
+     minusTwo.addEventListener("click",function(){
+        const numberTwo=document.getElementById('number-two').value;
+        const numTwo=parseInt(numberTwo);
+        const priceAmount=document.getElementById('price').innerText;
+        const pr=parseInt(priceAmount);
+       if(numTwo!=productMini){
+       
+        const result=document.getElementById('number-two').value=numTwo-1;
+        document.getElementById('product-price-two').innerText=priceTwo*result;
+        const priceResult=document.getElementById('price').innerText=pr-priceTwo;
+        document.getElementById('total-price').innerText=priceResult;
+
+
+       }
+       else{
+        document.getElementById('number').value=0;
+        // document.getElementById('product-price').innerText=0;
+
+       }
+     });
+
+
+   </script>
+</body>
+
+</html>
