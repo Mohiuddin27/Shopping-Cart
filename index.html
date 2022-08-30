@@ -31,7 +31,7 @@
                            <input type="number" min="0" id="number" class="form-control text-center" value="1">
                            <button id="plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$ <span id="product-price">1278</span></h5>
+                        <h5>$ <span id="product-price">1200</span></h5>
                         <img src="image/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -50,7 +50,7 @@
                            <button id="plus-two" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$ <span id="product-price-two">59</span></h5>
+                        <h5>$ <span id="product-price-two">800</span></h5>
                         <img src="image/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -61,14 +61,14 @@
 
                      <div class="col-md-8">
                         <h5>Subtotal: </h5>
-                        <h5>Tax:</h5>
+                        <h5>Tax(10%):</h5>
                         <h5>Total:</h5>
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$ <span id="price">1337</span></h5>
-                        <h5>$0</h5>
-                        <h5>$ <span id="total-price">1337</span> </h5>
+                        <h5>$ <span id="price">2000</span></h5>
+                        <h5>$ <span id="tax">200</span></h5>
+                        <h5>$ <span id="total-price">2200</span> </h5>
                      </div>
                   </div>
                </div>
@@ -98,7 +98,13 @@
         const priceAmount=document.getElementById('price').innerText;
         const pr=parseInt(priceAmount);
         const priceResult= document.getElementById('price').innerText=pr+price;
-        document.getElementById('total-price').innerText=priceResult;
+        const priceResults= priceResult*0.10;
+        document.getElementById('tax').innerText=priceResults;
+        const total= priceResult+priceResults;
+        document.getElementById('total-price').innerText=total;
+
+
+
 
      });
 
@@ -114,7 +120,10 @@
         const priceAmount=document.getElementById('price').innerText;
         const pr=parseInt(priceAmount);
         const priceResult=document.getElementById('price').innerText=pr-price;
-        document.getElementById('total-price').innerText=priceResult;
+        const priceResults= priceResult*0.10;
+        document.getElementById('tax').innerText=priceResults;
+        const total= priceResult+priceResults;
+        document.getElementById('total-price').innerText=total;
 
 
        }
@@ -142,7 +151,10 @@
         const priceTotalAmount=document.getElementById('total-price').innerText;
         const pt=parseInt(priceTotalAmount);
         const priceResult= document.getElementById('price').innerText=pr+priceTwo;
-        document.getElementById('total-price').innerText=priceResult;
+        const priceResults= priceResult*0.10;
+        document.getElementById('tax').innerText=priceResults;
+        const total= priceResult+priceResults;
+        document.getElementById('total-price').innerText=total;
 
      });
 
@@ -159,7 +171,10 @@
         const result=document.getElementById('number-two').value=numTwo-1;
         document.getElementById('product-price-two').innerText=priceTwo*result;
         const priceResult=document.getElementById('price').innerText=pr-priceTwo;
-        document.getElementById('total-price').innerText=priceResult;
+        const priceResults= priceResult*0.10;
+        document.getElementById('tax').innerText=priceResults;
+        const total= priceResult+priceResults;
+        document.getElementById('total-price').innerText=total;
 
 
        }
